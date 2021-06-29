@@ -1,5 +1,7 @@
 package socketApp.factorialSocket;
 
+import socketApp.multiplySocket.MultiplyClient;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -15,12 +17,7 @@ public class SumClient {
             System.out.println("Enter first number: ");
             int number1 = Integer.parseInt(readClientData.readLine());
             System.out.println("Enter second number: ");
-            int number2 = Integer.parseInt(readClientData.readLine());
-            PrintWriter numberToServer = new PrintWriter(clientSocket.getOutputStream(), true);
-            numberToServer.println(number1);
-            numberToServer.println(number2);
-            BufferedReader readResultFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-            System.out.println(readResultFromServer.readLine());
+            MultiplyClient.numbers(clientSocket, readClientData, number1);
 
         }
         catch(IOException exception){
